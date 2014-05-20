@@ -1,0 +1,31 @@
+<div class="header">
+  <h3 class="text-muted">drjova.github.io</h3>
+</div>
+
+<div class="jumbotron">
+  <h1>'Allo, 'Allo!</h1>
+  <p class="lead">
+    Have a look on invenio NOTES :)
+  </p>
+</div>
+
+    <div ng-hide="httperror">
+        <div class="form-group">
+            <input class="form-control" ng-model="query" placeholder="Search something" />
+        </div>
+    </div>
+    <hr />
+    <ul ng-hide="httperror" >
+        <li ng-repeat="commit in commits | filter:query:note" >
+            <p>{{commit.commit.message}}</p>
+        </li>
+    </ul>
+    <div ng-show="httperror">
+        <div class="alert alert-danger">
+            Sorry an {{httperror.message}}
+        </div>
+    </div>
+
+<div class="footer">
+    <p><span class="glyphicon glyphicon-heart"></span> from Invenio Team  </p>
+</div>
