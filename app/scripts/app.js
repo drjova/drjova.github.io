@@ -1,7 +1,12 @@
 'use strict';
-angular.module('hasNote', []).filter('note', function() {
+angular.module('split', []).filter('split', function() {
   return function(input) {
-     return input.match(/NOTE/);
+     return input.substr(0, 9)
+  };
+});
+angular.module('cleanAsterists', []).filter('clean', function() {
+  return function(input) {
+     return input.replace('*', '')
   };
 });
 angular
@@ -9,7 +14,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'hasNote'
+    'split',
+    'cleanAsterists'
   ])
   .config(function ($routeProvider) {
     $routeProvider
