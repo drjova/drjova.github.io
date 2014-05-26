@@ -50,15 +50,37 @@ body {
   font-size: 21px;
   padding: 14px 24px;
 }
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-.marketing p + h4 {
-  margin-top: 28px;
+pre {
+  border: none;
+  padding: 0;
 }
 
+.note-list {
+  margin: 15px 0;
+}
+
+.commit-details {
+  font-size: 11px;
+  color: #888;
+}
+.commits-list-commit{
+	padding-bottom: 20px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #eee;
+}
+.commits-list-commit:last-child{
+    border-bottom: none;
+}
+.commits-list-commit .full-commit-messaage{
+	margin: 10px 0 0 0 ;
+}
+.commit-details li:nth-child(2) {
+	text-align: right;
+	float: right;
+}
+.full-commit-message{
+	margin: 10px 0;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   /* Remove the padding we set earlier */

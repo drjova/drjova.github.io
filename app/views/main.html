@@ -1,51 +1,54 @@
-
-
 <div class="jumbotron">
   <h1>'Allo, 'Allo!</h1>
   <p class="lead">
     Have a look on invenio NOTES :)
   </p>
 </div>
-
-    <div ng-hide="httperror">
-        <div class="form-group">
-            <input class="form-control" ng-model="query" placeholder="Search something" />
-        </div>
+<div ng-hide="httperror">
+    <div class="form-group">
+        <input class="form-control" ng-model="query" placeholder="Search something" />
     </div>
-    <hr />
-    
-    <ul ng-hide="httperror" class="list-unstyled">
-        <li ng-repeat="commit in commits | filter:query" >
-            <h4>{{commit.commit.title}}</h4>
-            <span class="glyphicon glyphicon-user"></span> <a href="{{commit.author.html_url}}" target="_blank">{{commit.author.login}}</a>
-            <span class="glyphicon glyphicon-barcode"></span> <a href="{{commit.url}}" target="_blank">{{commit.sha | split}}</a>
-            <ul ng-show="(commit.commit.note).length">
-                <li ng-repeat="note in commit.commit.note">
-                    {{note | clean}}
-                </li>
-            </ul>
-            <a class="" href="javascript:void(0)" ng-click="showDetails = ! showDetails" >show commit message</a>
-            <div ng-show="showDetails" ng-bind-html-unsafe="commit.commit.message">
-                <div class="well  well-sm">
-                {{commit.commit.message}}
-                </div>
+</div>
+<hr />
+<ul ng-hide="httperror" class="list-unstyled commits-list">
+    <li class="commits-list-commit" ng-repeat="commit in commits | filter:query" >
+        <div class="commit-header">
+            <h4>{{commit.commit.title}} <span class="label label-info"></h4>
+        </div>
+        <ul class="note-list" ng-show="(commit.commit.note).length">
+            <li ng-repeat="note in commit.commit.note">
+                {{note | clean}}
+            </li>
+        </ul>
+        <ul class="commit-details list-unstyled list-inline">
+            <li>
+                <img src="{{commit.author.avatar_url}}" height="16" /> by <a href="{{commit.author.html_url}}" target="_blank">{{commit.author.login}}</a> on
+                <a href="{{commit.url}}" target="_blank">#{{commit.sha | split}}</a></span> 
+            </li>
+            <li>
+                <span class="glyphicon glyphicon-comment"></span> <a  href="javascript:void(0)" ng-click="showDetails = ! showDetails"> show commit message</a>
+            </li>
+        </ul>
+        <div ng-show="showDetails">
+            <div class="well well-sm full-commit-message">
+                <pre>{{commit.commit.message}}</pre>
             </div>
-            <hr />
-        </li>
-    </ul>
-    <div ng-show="httperror">
-        <div class="alert alert-danger">
-            Sorry an {{httperror.message}}
         </div>
+    </li>
+</ul>
+<div ng-show="httperror">
+    <div class="alert alert-danger">
+        Sorry an {{httperror.message}}
     </div>
-    <div ng-hide="(commits|filter:query).length">
-        <div class="alert alert-warning">
-            Sorry no results
-        </div>
+</div>
+<div ng-hide="(commits|filter:query).length">
+    <div class="alert alert-warning">
+        Sorry no results
     </div>
-    <div class="" ng-show="(commits|filter:query).length">
-        <p class="mute text-center">{{commits.length}} Notes</p>
-    </div>
+</div>
+<div class="" ng-show="(commits|filter:query).length">
+    <p class="mute text-center">{{commits.length}} Notes</p>
+</div>
 <div class="footer">
-    <p>With <span class="glyphicon glyphicon-heart"></span> from Invenio Team  </p>
+    <p>With <span class="glyphicon glyphicon-heart"></span> from Invenio Team</p>
 </div>

@@ -4,7 +4,7 @@ angular.module('split', []).filter('split', function() {
      return input.substr(0, 9)
   };
 });
-angular.module('cleanAsterists', []).filter('clean', function() {
+angular.module('clean', []).filter('clean', function() {
   return function(input) {
      return input.replace('*', '')
   };
@@ -15,7 +15,7 @@ angular
     'ngSanitize',
     'ngRoute',
     'split',
-    'cleanAsterists'
+    'clean',
   ])
   .config(function ($routeProvider) {
     $routeProvider
